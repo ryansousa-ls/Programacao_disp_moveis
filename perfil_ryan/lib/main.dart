@@ -34,7 +34,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int paginaAtual = 0;
 
-  // Lista com as páginas criadas no final do código
   final List<Widget> paginas = const [
     SobrePage(),
     FormacaoPage(),
@@ -55,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
 
-      // O Drawer (menu lateral) corrigido e com as chaves fechadas
+      // Menu lateral
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -66,8 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CircleAvatar(
-                    radius:
-                        30, // Um raio de 30 resulta em um tamanho total de 60
+                    radius: 30,
                     backgroundImage: AssetImage('assets/images/perfil.jpg'),
                   ),
                   Text(
@@ -82,6 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: const Icon(Icons.person),
               title: const Text('Sobre Mim'),
               onTap: () {
+                //quando clica na opção ele abre outra pagina
                 selecionarPagina(0);
                 Navigator.pop(context); // Fecha o menu lateral
               },
@@ -91,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Formação'),
               onTap: () {
                 selecionarPagina(1);
-                Navigator.pop(context); // Fecha o menu lateral
+                Navigator.pop(context);
               },
             ),
 
@@ -100,17 +99,16 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Contato'),
               onTap: () {
                 selecionarPagina(2);
-                Navigator.pop(context); // Fecha o menu lateral
+                Navigator.pop(context);
               },
             ),
           ], //children
         ),
       ),
 
-      // O body agora exibe a página de acordo com o index selecionado
       body: paginas[paginaAtual],
 
-      // Barra de navegação inferior adicionada para alternar as páginas
+      // Barra de navegação inferior
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: paginaAtual,
         onTap: selecionarPagina,
@@ -133,7 +131,6 @@ class _MyHomePageState extends State<MyHomePage> {
 class SobrePage extends StatelessWidget {
   const SobrePage({super.key});
 
-  // Função auxiliar trazida para dentro da página para organizar o código
   Widget _buildInfoRow(IconData icon, String text) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
