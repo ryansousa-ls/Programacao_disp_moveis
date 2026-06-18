@@ -12,8 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Perfil',
       theme: ThemeData(
+        // mexe aqui para alterar o esquema de cores do app
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 35, 1, 255),
+          seedColor: const Color(0xFF009688),
+          brightness: Brightness.dark, //tema escuro mais massa
         ),
       ),
       home: const MyHomePage(title: 'Meu Perfil'),
@@ -50,7 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 75, 6, 255),
+        //barra do comentario la em cima
+        backgroundColor: const Color.fromARGB(255, 9, 45, 107),
         title: Text(widget.title),
       ),
 
@@ -150,16 +153,39 @@ class SobrePage extends StatelessWidget {
         const Center(
           child: Text(
             'Quem eu sou',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
         ),
-        const SizedBox(height: 20),
-        Image.asset('assets/images/perfil.jpg', height: 200),
-        const SizedBox(height: 20),
-        _buildInfoRow(Icons.person, 'Nome: Ryan Charles'),
-        _buildInfoRow(Icons.work, 'Profissão: Analista de sistemas'),
-        _buildInfoRow(Icons.location_city, 'Instituição: UESPI'),
-        _buildInfoRow(Icons.cake, 'Idade: 22 anos'),
+        const SizedBox(height: 24),
+
+        Card(
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                // deixa as bodas redondas
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Image.asset('assets/images/perfil.jpg', height: 200),
+                ),
+                const SizedBox(height: 24),
+                _buildInfoRow(Icons.person, 'Nome: Ryan Charles'),
+                const SizedBox(
+                  height: 12,
+                ), // Espaço extra entre as linhas para respirar
+                _buildInfoRow(Icons.work, 'Profissão: Analista de sistemas'),
+                const SizedBox(height: 12),
+                _buildInfoRow(Icons.location_city, 'Instituição: UESPI'),
+                const SizedBox(height: 12),
+                _buildInfoRow(Icons.cake, 'Idade: 22 anos'),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -206,7 +232,10 @@ class FormacaoPage extends StatelessWidget {
                     SizedBox(height: 8),
                     Text(
                       'Universidade Estadual do Piauí (UESPI)',
-                      style: TextStyle(fontSize: 16, color: Colors.black54),
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color.fromARGB(137, 255, 255, 255),
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ],
