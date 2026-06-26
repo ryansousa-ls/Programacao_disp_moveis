@@ -34,7 +34,7 @@ class TelaPrincipal extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
 
-      // Menu Lateral (Drawer)
+      // Menu Lateral
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -215,7 +215,7 @@ class TelaAgendamentos extends StatelessWidget {
           const SizedBox(height: 12),
           _cardAgendamento(
             servico: 'Tentativa de Degradê',
-            barbeiro: 'Barbeiro: luca',
+            barbeiro: 'Barbeiro: Luca',
             data: 'Amanhã - 15:00',
           ),
           const SizedBox(height: 12),
